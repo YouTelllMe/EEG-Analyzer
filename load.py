@@ -2,12 +2,13 @@ import mne
 import os
 
 
-def load_mff(path: str) -> mne.io.Raw:
+def load_mff(path: str, channels: list[str]) -> mne.io.Raw:
     """
     Load EEG data in the .mff format into a mne.io.Raw object
     """
     assert os.path.isdir(path), f"{path} does not exist"
     raw_mff = mne.io.read_raw_egi(path)
+    raw_mff = raw_mff.pick(channels)
     return raw_mff
 
 
@@ -42,7 +43,6 @@ def epoch(raw: mne.io.Raw,
     events = mne.find_events(raw, stim_channel=stim_channel)
     epochs = mne.Epochs(raw, events, event_id = events_key)
     return epochs
-
 
 
 def artifact_filtering():

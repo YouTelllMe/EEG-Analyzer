@@ -4,13 +4,19 @@ import os
 
 
 def plot_epoch(epochs: mne.Epochs) -> None:
+    """
+    Plots an interactive windows of an mne.Epochs object.
+
+    Param
+    =====
+    epochs: epochs data object
+    """
     epochs.plot(n_epochs=10)
     plt.show()
 
-def plot_interactive_all(raw: mne.io.Raw, 
+def plot_data(raw: mne.io.Raw, 
                          duration: int = 60,
                          scalings: float | None = None, 
-                         channels: list[str] | None = None,
                          n_channels: int = 20,
                          lowpass: float | None = None, 
                          highpass: float | None = None, 
@@ -28,7 +34,6 @@ def plot_interactive_all(raw: mne.io.Raw,
     lowpass: lower boundary for frequency
     highpass: higher boundary for frequency
     """
-    raw = raw.pick(channels)
     raw.plot(duration=duration, 
              proj=False, 
              scalings=scalings, 
