@@ -159,7 +159,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-config.py 
-5010_oba_per_20230609_015804.mff
-5010_20230609_125733_exp01_oba_per.json
-main.py
+# System files
+.DS_Store
